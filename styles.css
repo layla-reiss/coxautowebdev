@@ -117,6 +117,12 @@ th, td {
     background-image: linear-gradient(to bottom right, green, pink);
 }
 
+@font-face {
+    font-family: "ComicSansMS3";
+    src: url(/comic-sans-ms/ComicSansMS3.ttf);
+}
+
 #textbox{
     height: 120px;
+    font-family: sans-serif;
 }
