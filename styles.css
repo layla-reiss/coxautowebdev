@@ -105,3 +105,13 @@ th, td {
     height:45px;
     width:90px;
 }
+
+#submit{
+    height:45px;
+    width:90px;
+    border:none;
+    font-size: small;
+    color:white;
+    font-weight: bold;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
