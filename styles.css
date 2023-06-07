@@ -126,3 +126,7 @@ th, td {
     height: 120px;
     font-family: sans-serif;
 }
+
+.things {
+    align-content: flex-start;
+}
