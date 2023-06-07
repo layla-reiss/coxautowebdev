@@ -106,7 +106,7 @@ th, td {
     width:90px;
 }
 
-#submit{
+#submit {
     height:45px;
     width:90px;
     border:none;
@@ -117,16 +117,11 @@ th, td {
     background-image: linear-gradient(to bottom right, green, pink);
 }
 
-@font-face {
-    font-family: "ComicSansMS3";
-    src: url(/comic-sans-ms/ComicSansMS3.ttf);
-}
-
 #textbox{
     height: 120px;
     font-family: sans-serif;
 }
 
 .things {
-    align-content: flex-start;
+    align-items: flex-start;
 }
