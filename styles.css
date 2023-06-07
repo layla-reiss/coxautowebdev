@@ -106,12 +106,13 @@ th, td {
     width:90px;
 }
 
-#submit{
+button{
     height:45px;
     width:90px;
     border:none;
     font-size: small;
     color:white;
+
     font-weight: bold;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
