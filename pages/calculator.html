@@ -29,6 +29,7 @@
                 success: function(response)
                 {
                     alert(response);
+                    document.getElementById("answer").innerText = response;
                 },
                 contentType: "application/json; charset=utf-8"
                 });
@@ -49,8 +50,8 @@
                 </select>
                 <label for="dropdownmenu">Choose the operator</label> <br>
                 <p>Input second number:<input type="number" id="secondNumber"> </p>
-                <input type="submit" value="Submit">
-                <textarea rows="1" id="answer"></textarea>
+                <input type="submit" id="#submit">
+                <label id="answer"></label>
             </div>
         </form>
     </body>
