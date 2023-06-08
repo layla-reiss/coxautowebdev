@@ -168,5 +168,5 @@ th, td {
 
 #calculation {
     display: flex;
-    align-items: flex-start;
+    align-content: flex-start;
 }
