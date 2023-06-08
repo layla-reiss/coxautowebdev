@@ -165,3 +165,8 @@ th, td {
     text-align: center;
     padding: 2em;
   }
+
+#calculation {
+    display: flex;
+    align-items: flex-start;
+}
