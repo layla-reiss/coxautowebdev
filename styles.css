@@ -168,7 +168,7 @@ th, td {
 
 #calculation {
     display: flex;
-    align-content: flex-start;
+    justify-content: flex-start;
 }
 
 #calculatorDisplay {
