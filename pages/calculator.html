@@ -6,21 +6,33 @@
         <script>
             $(document).ready(function(){
             $("form").submit(function(){
+                event.stopPropagation();
+                event.preventDefault();
                 let firstNumber = $("#firstNumber").val()
                 let secondNumber = $("#secondNumber").val()
                 let operation = $('#dropdown').find(":selected").val();
-                alert(operation)
-                $.post("https://funkshun.azurewebsites.net/api/newcodewow?code=wq7JneFo_7sJueCWfE2Z7kUQG4bD3KdrVKaUd8ijk380AzFu6swiUg==",
+                var data = {
+                    firstNumber: firstNumber,
+                    secondNumber: secondNumber,
+                    operation: operation
+                }
+                // $.post("https://funkshun.azurewebsites.net/api/newcodewow?code=wq7JneFo_7sJueCWfE2Z7kUQG4bD3KdrVKaUd8ijk380AzFu6swiUg==",
+                // JSON.stringify(data),
+                // function(data)
+                // {
+                //     alert(data);
+                // })
+                $.ajax({
+                type: "POST",
+                url: "https://funkshun.azurewebsites.net/api/newcodewow?code=wq7JneFo_7sJueCWfE2Z7kUQG4bD3KdrVKaUd8ijk380AzFu6swiUg==",
+                data: JSON.stringify(data),
+                success: function(response)
                 {
-                    first: firstNumber,
-                    second: secondNumber,
-                    op: operation
+                    alert(response);
                 },
-                function(data, status)
-                {
-                    alert(data);
-                    alert(status);
-                })
+                contentType: "application/json; charset=utf-8"
+                });
+
             });
             });
         </script>
