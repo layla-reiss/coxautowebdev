@@ -32,37 +32,44 @@
 
             });
             });
+
+            function addNumber(value)
+            {
+             let text = document.getElementById("screen").innerText;
+             text += value;
+             document.getElementById("screen").innerText = text;
+            }
         
         </script>
     </head>
     <body>
         <div id="calculatornew">
-            <div id="calculator display">
-                <label id="screen">0</label>
+            <div id="calculatorDisplay">
+                <label id="screen"></label>
             </div>
             <div id="123">
-                <button class="numberbutton">1</button>
-                <button class="numberbutton">2</button>
-                <button class="numberbutton">3</button>
-                <button class="numberbutton">+</button>
+                <button class="btn btn-light" onclick="addNumber('1')">1</button>
+                <button class="btn btn-light" onclick="addNumber('2')">2</button>
+                <button class="btn btn-light" onclick="addNumber('3')">3</button>
+                <button  class="btn btn-success" onclick="addNumber('+')">+</button>
             </div>
             <div id="456">
-                <button class="numberbutton">4</button>
-                <button class="numberbutton">5</button>
-                <button class="numberbutton">6</button>
-                <button class="numberbutton">-</button>
+                <button class="btn btn-light" onclick="addNumber('4')">4</button>
+                <button class="btn btn-light" onclick="addNumber('5')">5</button>
+                <button class="btn btn-light" onclick="addNumber('6')">6</button>
+                <button  class="btn btn-danger" onclick="addNumber('-')">-</button>
             </div>        
             <div id="789">
-                <button class="numberbutton">7</button>
-                <button class="numberbutton">8</button>
-                <button class="numberbutton">9</button>
-                <button class="numberbutton">*</button>
+                <button class="btn btn-light" onclick="addNumber('7')">7</button>
+                <button class="btn btn-light" onclick="addNumber('8')">8</button>
+                <button class="btn btn-light" onclick="addNumber('9')">9</button>
+                <button  class="btn btn-warning" onclick="addNumber('*')">*</button>
             </div>
             <div id="000">
-                <button class="numberbutton">0</button>
-                <button class="numberbutton">.</button>
-                <button class="numberbutton" id="equals" click="pain()" >=</button>
-                <button class="numberbutton">/</button>
+                <button class="btn btn-light" onclick="addNumber('0')">0</button>
+                <button class="btn btn-light" onclick="addNumber('.')">.</button>
+                <button class="btn btn-light" id="equals" click="pain()" >=</button>
+                <button  class="btn btn-info">/</button>
             </div>
         </div>
         <div class="spinner-border text-success" id="pain" role="status" hidden=true>

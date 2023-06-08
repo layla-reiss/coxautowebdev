@@ -170,3 +170,8 @@ th, td {
     display: flex;
     align-content: flex-start;
 }
+
+#calculatorDisplay {
+    display: flex;
+    justify-content: flex-start;
+}
