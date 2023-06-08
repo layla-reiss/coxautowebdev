@@ -6,7 +6,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script>
             $(document).ready(function(){
-            $("form").submit(function(){
+            $("#equals").click(function(){
+                document.getElementById("pain").hidden = false;
                 event.stopPropagation();
                 event.preventDefault();
                 let firstNumber = $("#firstNumber").val()
@@ -17,12 +18,6 @@
                     secondNumber: secondNumber,
                     operation: operation
                 }
-                // $.post("https://funkshun.azurewebsites.net/api/newcodewow?code=wq7JneFo_7sJueCWfE2Z7kUQG4bD3KdrVKaUd8ijk380AzFu6swiUg==",
-                // JSON.stringify(data),
-                // function(data)
-                // {
-                //     alert(data);
-                // })
                 $.ajax({
                 type: "POST",
                 url: "https://funkshun.azurewebsites.net/api/newcodewow?code=wq7JneFo_7sJueCWfE2Z7kUQG4bD3KdrVKaUd8ijk380AzFu6swiUg==",
@@ -37,23 +32,41 @@
 
             });
             });
+        
         </script>
     </head>
     <body>
-        <form action="">
-            <div id="calculation">
-                <p> Input first number:<input type="number" id="firstNumber"> </p>
-                <select id="dropdown" value="dropdownmenu">
-                    <option value="+">+</option>
-                    <option value="-">-</option>
-                    <option value="*">*</option>
-                    <option value="/">/</option>
-                </select>
-                <label for="dropdownmenu">Choose the operator</label> <br>
-                <p>Input second number:<input type="number" id="secondNumber"> </p>
-                <input type="submit" id="submit">
-                <label id="answer"></label>
+        <div id="calculatornew">
+            <div id="calculator display">
+                <label id="screen">0</label>
             </div>
-        </form>
+            <div id="123">
+                <button class="numberbutton">1</button>
+                <button class="numberbutton">2</button>
+                <button class="numberbutton">3</button>
+                <button class="numberbutton">+</button>
+            </div>
+            <div id="456">
+                <button class="numberbutton">4</button>
+                <button class="numberbutton">5</button>
+                <button class="numberbutton">6</button>
+                <button class="numberbutton">-</button>
+            </div>        
+            <div id="789">
+                <button class="numberbutton">7</button>
+                <button class="numberbutton">8</button>
+                <button class="numberbutton">9</button>
+                <button class="numberbutton">*</button>
+            </div>
+            <div id="000">
+                <button class="numberbutton">0</button>
+                <button class="numberbutton">.</button>
+                <button class="numberbutton" id="equals" click="pain()" >=</button>
+                <button class="numberbutton">/</button>
+            </div>
+        </div>
+        <div class="spinner-border text-success" id="pain" role="status" hidden=true>
+            <span class="visually-hidden">Loading...</span>
+        </div>
     </body>
 </html>
