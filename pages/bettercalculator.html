@@ -29,7 +29,6 @@
                 },
                 contentType: "application/json; charset=utf-8"
                 });
-
             });
             });
 
@@ -39,7 +38,24 @@
              text += value;
              document.getElementById("screen").innerText = text;
             }
-        
+
+            function calculation()
+            {
+                let problem = document.getElementById("screen").innerText;
+                let splitproblem = []
+                let index = 0;
+                for (let i = 0; i < problem.length; i++)
+                {
+                    let lastOperator = "";
+                    if (problem[i] == "+" || problem[i] == "-" || problem[i] == "*" || problem[i] == "/")
+                    {
+                        splitproblem.push(problem.slice(0, index-2));
+                        splitproblem.push(problem[i]);
+                        lastOperator = problem[i];
+                    }
+                }          
+                alert(splitproblem);
+            }
         </script>
     </head>
     <body>
@@ -51,7 +67,9 @@
                 <button class="btn btn-light" onclick="addNumber('1')">1</button>
                 <button class="btn btn-light" onclick="addNumber('2')">2</button>
                 <button class="btn btn-light" onclick="addNumber('3')">3</button>
-                <button  class="btn btn-success" onclick="addNumber('+')">+</button>
+                <button  class="btn btn-success" onclick="addNumber('+')" data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="This top tooltip is themed via CSS variables.">+</button>
             </div>
             <div id="456">
                 <button class="btn btn-light" onclick="addNumber('4')">4</button>
@@ -68,8 +86,8 @@
             <div id="000">
                 <button class="btn btn-light" onclick="addNumber('0')">0</button>
                 <button class="btn btn-light" onclick="addNumber('.')">.</button>
-                <button class="btn btn-light" id="equals" click="pain()" >=</button>
-                <button  class="btn btn-info">/</button>
+                <button class="btn btn-light" id="equals" onclick=calculation() >=</button>
+                <button  class="btn btn-info" onclick="addNumber('/')">/</button>
             </div>
         </div>
         <div class="spinner-border text-success" id="pain" role="status" hidden=true>
