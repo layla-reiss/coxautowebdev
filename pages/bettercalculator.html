@@ -7,12 +7,9 @@
         <script>
             $(document).ready(function(){
             $("#equals").click(function(){
-                document.getElementById("pain").hidden = false;
                 event.stopPropagation();
                 event.preventDefault();
-                let firstNumber = $("#firstNumber").val()
-                let secondNumber = $("#secondNumber").val()
-                let operation = $('#dropdown').find(":selected").val();
+                let firstNumber, secondNumber, operation = calculation();
                 var data = {
                     firstNumber: firstNumber,
                     secondNumber: secondNumber,
@@ -44,17 +41,30 @@
                 let problem = document.getElementById("screen").innerText;
                 let splitproblem = []
                 let index = 0;
-                for (let i = 0; i < problem.length; i++)
+                let operator = "";
+                if (problem.includes("+"))
                 {
-                    let lastOperator = "";
-                    if (problem[i] == "+" || problem[i] == "-" || problem[i] == "*" || problem[i] == "/")
-                    {
-                        splitproblem.push(problem.slice(0, index-2));
-                        splitproblem.push(problem[i]);
-                        lastOperator = problem[i];
-                    }
-                }          
-                alert(splitproblem);
+                    operator = "+";
+                }
+                else if (problem.includes("-"))
+                {
+                    operator = "-";
+                }
+                else if (problem.includes("*"))
+                {
+                    operator = "*";
+                }
+                else if (problem.includes("/"))
+                {
+                    operator = "/";
+                }
+                else
+                {
+                    document.getElementById("pain").hidden = false;
+                }
+                let firstNum = problem.slice(0, problem.indexOf(operator));
+                let secondNum = problem.slice(0, problem.indexOf(operator));
+                return firstNum, secondNum, operator;
             }
         </script>
     </head>
@@ -86,7 +96,7 @@
             <div id="000">
                 <button class="btn btn-light" onclick="addNumber('0')">0</button>
                 <button class="btn btn-light" onclick="addNumber('.')">.</button>
-                <button class="btn btn-light" id="equals" onclick=calculation() >=</button>
+                <button class="btn btn-light" id="equals">=</button>
                 <button  class="btn btn-info" onclick="addNumber('/')">/</button>
             </div>
         </div>
