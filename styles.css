@@ -175,3 +175,7 @@ th, td {
     display: flex;
     justify-content: flex-start;
 }
+
+.custom-tooltip {
+    --bs-tooltip-bg: var(--bs-primary);
+  }
