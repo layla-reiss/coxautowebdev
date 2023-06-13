@@ -12,9 +12,9 @@
             // if higher, say higher
             //if they enter non-prime, don't count the guess
             let guesses = 6;
-            let trueNumber = 2;
+            let trueNumber = 8;
             let found = false;
-            while (isPrime(trueNumber) == true)
+            while (isPrime(trueNumber) == false)
             {
                 trueNumber = getRandomInt();
             }
@@ -49,9 +49,9 @@
                     found = true;
                     document.getElementById("guessMsg").innerText = "Refresh the page to play again";
                 }
-                else if (isPrime(uInput) == true)
+                else if (isPrime(uInput) == false)
                 {
-                    alert("That's a prime - your guess will not be counted");
+                    alert("That's not a prime - your guess will not be counted");
                 }
                 else if (uInput > trueNumber)
                 {
