@@ -5,15 +5,11 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script>
-            //get random prime number
-            //user gets six guesses
-            //check if user guess is number
-            //if lower, say lower
-            // if higher, say higher
-            //if they enter non-prime, don't count the guess
+
             let guesses = 6;
             let trueNumber = 8;
             let found = false;
+            let alreadyGuessed = [];
             while (isPrime(trueNumber) == false)
             {
                 trueNumber = getRandomInt();
@@ -66,6 +62,8 @@
                 if (!found && guesses > 0)
                 {
                     document.getElementById("guessMsg").innerText = "You have " + guesses + " guesses left";
+                    alreadyGuessed.push(uInput);
+                    document.getElementById("alreadyGuessed").innerText = "You have already guessed: " + alreadyGuessed;
                 }
                 else if (!found)
                 {
@@ -78,10 +76,21 @@
         <form action="">
             <div id="space">
                 <p id="guessMsg">You have 6 guesses left</p>
-                <p>Input guess:<input type="number" id="uInput"> </p>
+                <p id="alreadyGuessed">You have not guessed any numbers yet</p>
+                <p>Input guess:<input type="number" id="uInput"></p>
                 <input type="button" id="submit" value="submit number" onclick="checkInput()">            
             </div>
         </form>
     </body>
+    <script>
+            var input = document.getElementById("uInput");
+            input.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("submit").click();
+            }
+            });
+
+    </script>
 </html>
     
