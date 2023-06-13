@@ -47,6 +47,7 @@
                 {
                     alert("Woah you got it!");
                     found = true;
+                    document.getElementById("guessMsg").innerText = "Refresh the page to play again";
                 }
                 else if (isPrime(uInput) == true)
                 {
@@ -71,7 +72,6 @@
                     document.getElementById("guessMsg").innerText = "Game over :( the number was " + trueNumber;
                 }
             }
-
         </script>
     </head>
     <body>
