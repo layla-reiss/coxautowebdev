@@ -180,11 +180,6 @@ th, td {
     --bs-tooltip-bg: var(--bs-primary);
   }
 
-#primeNumbers {
-    display: flex;
-    align-content: flex-start;
-}
-
 #primefactors {
     height:45px;
     width:90px;
