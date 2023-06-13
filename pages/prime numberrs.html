@@ -39,7 +39,10 @@
 
                     while (n >= 2) {
                         if (n % divisor == 0) {
-                        factors.push(divisor);
+                            if (factors.includes(divisor) == false)
+                            {
+                                factors.push(divisor);
+                            }
                         n = n / divisor;
                         } else {
                         divisor++;
@@ -48,7 +51,6 @@
                     document.getElementById("progress").style.width = "100%";
                     document.getElementById("prime").innerText = factors;
                     document.getElementById("prime").hidden = false;
-            
                 }
         </script>
         <body>
