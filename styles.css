@@ -190,3 +190,13 @@ th, td {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background-image: linear-gradient(to bottom right, green, aliceblue);
 }
+
+#uInput {
+    height:45px;
+    width:90px;
+    border:none;
+    font-size: x-small;
+    color:white;
+    font-weight: bold;
+    background-image: linear-gradient(to bottom right, green, pink);
+}
