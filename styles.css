@@ -179,3 +179,8 @@ th, td {
 .custom-tooltip {
     --bs-tooltip-bg: var(--bs-primary);
   }
+
+#primeNumbers {
+    display: flex;
+    justify-content: flex-start;
+}
