@@ -49,10 +49,6 @@
                     location.reload();
 
                 }
-                else if (isPrime(uInput) == false)
-                {
-                    alert("That's not a prime - your guess will not be counted");
-                }
                 else if (uInput > trueNumber)
                 {
                     alert("The number is smaller");
@@ -71,31 +67,38 @@
             function setBoard()
             {
                 let uInput = $("#uInput").val()
-                let row = guessRows[guesses];
-                let nextRow = guessRows[guesses - 1];
-                document.getElementById(row + "digit").innerText = uInput;
-                const newInput = checkInput();
-                if (newInput.includes("<"))
+                if (isPrime(uInput) == false)
                 {
-                    currentGreater = newInput;
+                    alert("That's not a prime - your guess will not be counted");
                 }
-                else if (newInput.includes(">"))
+                else
                 {
-                    currentLess = newInput;
-                }  
-                document.getElementById(nextRow + "greaterthan").innerText = currentGreater;
-                document.getElementById(nextRow + "lessthan").innerText = currentLess;
+                    let row = guessRows[guesses];
+                    let nextRow = guessRows[guesses - 1];
+                    document.getElementById(row + "digit").innerText = uInput;
+                    const newInput = checkInput();
+                    if (newInput.includes("<"))
+                    {
+                        currentGreater = newInput;
+                    }
+                    else if (newInput.includes(">"))
+                    {
+                        currentLess = newInput;
+                    }  
 
-                
-                if (!found && guesses > 0)
-                {
-                    document.getElementById("guessMsg").innerText = "You have " + guesses + " guesses left";
-                    alreadyGuessed.push(uInput);
-                    document.getElementById("alreadyGuessed").innerText = "You have already guessed: " + alreadyGuessed;
-                }
-                else if (!found)
-                {
-                    document.getElementById("guessMsg").innerText = "Game over :( the number was " + trueNumber;
+                    document.getElementById(nextRow + "greaterthan").innerText = currentGreater;
+                    document.getElementById(nextRow + "lessthan").innerText = currentLess;
+                    
+                    if (!found && guesses > 0)
+                    {
+                        document.getElementById("guessMsg").innerText = "You have " + guesses + " guesses left";
+                        alreadyGuessed.push(uInput);
+                        document.getElementById("alreadyGuessed").innerText = "You have already guessed: " + alreadyGuessed;
+                    }
+                    else if (!found)
+                    {
+                        document.getElementById("guessMsg").innerText = "Game over :( the number was " + trueNumber;
+                    }
                 }
 
             }
@@ -175,7 +178,6 @@
             input.addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 event.preventDefault();
-                alert($("th.firstguess#firstdigit").val());
                 document.getElementById("submit").click();
             }
             });
