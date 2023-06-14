@@ -43,7 +43,14 @@
             {
                 document.getElementById("calculations").innerText = "";
                 let uNumber = $("#uNumber").val();
-                hexaCheckSum(uNumber);
+                if (uNumber < 16 && uNumber > 9)
+                {
+                    document.getElementById("calculations").innerText = letters[uNumber-10];
+                }
+                else
+                {
+                    hexaCheckSum(uNumber);
+                }
             }
 
             function hexaCheckSum(uNumber)
