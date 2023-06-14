@@ -55,48 +55,55 @@
 
             function hexaCheckSum(uNumber)
             {
-                let sum = 0;
-                let stringSum = "";
-                uNumber = uNumber.toString().split("");
-                for (let i = 0; i < uNumber.length; i++)
+                if (uNumber < 16 && uNumber > 9)
                 {
-                    if (isNaN(uNumber[i]))
-                    {
-                        let letter = letters.indexOf(uNumber[i].toLowerCase());
-                        sum += letter+10;
-                        if (i != uNumber.length-1)
-                        {
-                            stringSum += uNumber[i] + "(" + (letter+10) + ")" + " + ";
-                        }
-                        else
-                        {
-                            stringSum += uNumber[i] + " = ";
-                        }
-                    }
-                    else
-                    {
-                        sum += parseInt(uNumber[i]);
-                        if (i != uNumber.length-1)
-                        {
-                            stringSum += uNumber[i] + " + ";
-                        }
-                        else
-                        {
-                            stringSum += uNumber[i] + " = ";
-                        }
-                    }
-                }
-                document.getElementById("calculations").innerText += stringSum + "\n";
-                if (sum > 15)
-                {
-                    document.getElementById("calculations").innerText += sum + "\n";
-                    let uNumber = sum;
-                    checkSum(uNumber);
+                    document.getElementById("calculations").innerText = letters[uNumber-10];
                 }
                 else
                 {
-                    sum = convertToHexSum(sum);
-                    document.getElementById("calculations").innerText += sum + "\n";
+                    let sum = 0;
+                    let stringSum = "";
+                    uNumber = uNumber.toString().split("");
+                    for (let i = 0; i < uNumber.length; i++)
+                    {
+                        if (isNaN(uNumber[i]))
+                        {
+                            let letter = letters.indexOf(uNumber[i].toLowerCase());
+                            sum += letter+10;
+                            if (i != uNumber.length-1)
+                            {
+                                stringSum += uNumber[i] + "(" + (letter+10) + ")" + " + ";
+                            }
+                            else
+                            {
+                                stringSum += uNumber[i] + " = ";
+                            }
+                        }
+                        else
+                        {
+                            sum += parseInt(uNumber[i]);
+                            if (i != uNumber.length-1)
+                            {
+                                stringSum += uNumber[i] + " + ";
+                            }
+                            else
+                            {
+                                stringSum += uNumber[i] + " = ";
+                            }
+                        }
+                    }
+                    document.getElementById("calculations").innerText += stringSum + "\n";
+                    if (sum > 15)
+                    {
+                        document.getElementById("calculations").innerText += sum + "\n";
+                        let uNumber = sum;
+                        hexaCheckSum(uNumber);
+                    }
+                    else
+                    {
+                        sum = convertToHexSum(sum);
+                        document.getElementById("calculations").innerText += sum + "\n";
+                    }
                 }
             }
 
