@@ -51,7 +51,6 @@
                 let sum = 0;
                 let stringSum = "";
                 uNumber = uNumber.toString().split("");
-                alert(uNumber);
                 for (let i = 0; i < uNumber.length; i++)
                 {
                     if (isNaN(uNumber[i]))
@@ -90,7 +89,7 @@
                 else
                 {
                     sum = convertToHexSum(sum);
-                    document.getElementById("calculations").innerText += sum + "\n";      
+                    document.getElementById("calculations").innerText += sum + "\n";
                 }
             }
 
