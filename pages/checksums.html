@@ -5,6 +5,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script>
+            const letters = ['a', 'b', 'c', 'd', 'e', 'f'];
+
             function checkSum(uNumber)
             {
                 let sum = 0;
@@ -26,6 +28,7 @@
                 document.getElementById("calculations").innerText += stringSum + "\n";
                 if (sum.toString().length != 1)
                 {
+                    
                     document.getElementById("calculations").innerText += sum + "\n";
                     let uNumber = sum;
                     checkSum(uNumber);
@@ -40,7 +43,64 @@
             {
                 document.getElementById("calculations").innerText = "";
                 let uNumber = $("#uNumber").val();
-                checkSum(uNumber);
+                hexaCheckSum(uNumber);
+            }
+
+            function hexaCheckSum(uNumber)
+            {
+                let sum = 0;
+                let stringSum = "";
+                uNumber = uNumber.toString().split("");
+                alert(uNumber);
+                for (let i = 0; i < uNumber.length; i++)
+                {
+                    if (isNaN(uNumber[i]))
+                    {
+                        let letter = letters.indexOf(uNumber[i].toLowerCase());
+                        sum += letter+10;
+                        if (i != uNumber.length-1)
+                        {
+                            stringSum += uNumber[i] + "(" + (letter+10) + ")" + " + ";
+                        }
+                        else
+                        {
+                            stringSum += uNumber[i] + " = ";
+                        }
+                    }
+                    else
+                    {
+                        sum += parseInt(uNumber[i]);
+                        if (i != uNumber.length-1)
+                        {
+                            stringSum += uNumber[i] + " + ";
+                        }
+                        else
+                        {
+                            stringSum += uNumber[i] + " = ";
+                        }
+                    }
+                }
+                document.getElementById("calculations").innerText += stringSum + "\n";
+                if (sum > 15)
+                {
+                    document.getElementById("calculations").innerText += sum + "\n";
+                    let uNumber = sum;
+                    checkSum(uNumber);
+                }
+                else
+                {
+                    sum = convertToHexSum(sum);
+                    document.getElementById("calculations").innerText += sum + "\n";      
+                }
+            }
+
+            function convertToHexSum(sum)
+            {
+                if (sum > 9 && sum < 16)
+                {
+                    sum = letters[sum-10];
+                }
+                return sum;
             }
         </script>
     </head>
