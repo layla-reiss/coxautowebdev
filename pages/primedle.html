@@ -12,7 +12,7 @@
             let found = false;
             let hintsLeft = 3;
             let alreadyGuessed = [];
-            let currentGreater = "0<", currentLess = ">0";
+            let currentGreater = "0<", currentLess = "<100";
             while (isPrime(trueNumber) == false)
             {
                 trueNumber = getRandomInt();
@@ -51,13 +51,11 @@
                 }
                 else if (uInput > trueNumber)
                 {
-                    alert("The number is smaller");
-                    uInput += ">";
+                    uInput = "<" + uInput;
                     guesses -= 1;
                 }
                 else if (uInput < trueNumber)
                 {
-                    alert("The number is greater");
                     uInput += "<";
                     guesses -= 1;
                 }
@@ -77,27 +75,30 @@
                     let nextRow = guessRows[guesses - 1];
                     document.getElementById(row + "digit").innerText = uInput;
                     const newInput = checkInput();
-                    if (newInput.includes("<"))
-                    {
-                        currentGreater = newInput;
-                    }
-                    else if (newInput.includes(">"))
+                    if (newInput.charAt(0) == "<")
                     {
                         currentLess = newInput;
+                    }
+                    else if (newInput.includes("<"))
+                    {
+                        currentGreater = newInput;
                     }  
 
-                    document.getElementById(nextRow + "greaterthan").innerText = currentGreater;
-                    document.getElementById(nextRow + "lessthan").innerText = currentLess;
+                    if (guesses > 0)
+                    {
+                        document.getElementById(nextRow + "greaterthan").innerText = currentGreater;
+                        document.getElementById(nextRow + "lessthan").innerText = currentLess;
+                    }
+                    else if(guesses == 0)
+                    {
+                       alert("Game over :( the number was " + trueNumber); 
+                    }
                     
                     if (!found && guesses > 0)
                     {
                         document.getElementById("guessMsg").innerText = "You have " + guesses + " guesses left";
                         alreadyGuessed.push(uInput);
                         document.getElementById("alreadyGuessed").innerText = "You have already guessed: " + alreadyGuessed;
-                    }
-                    else if (!found)
-                    {
-                        document.getElementById("guessMsg").innerText = "Game over :( the number was " + trueNumber;
                     }
                 }
 
@@ -163,9 +164,9 @@
                     <th id="fifthlessthan">--</th>
                 </tr>                
                 <tr id="sixthguess">
-                    <th id="sixgreaterthan">--</th>
-                    <th id="sixdigit">00</th>
-                    <th id="sixlessthan">--</th>
+                    <th id="sixthgreaterthan">--</th>
+                    <th id="sixthdigit">00</th>
+                    <th id="sixthlessthan">--</th>
                 </tr>
             </table>
         </form>
