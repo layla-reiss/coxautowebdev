@@ -45,7 +45,9 @@
                 let uNumber = $("#uNumber").val();
                 let checkSum = uNumber.toString().split("");
                 checkSum = checkSum.pop();
+                uNumber = uNumber.toString().split("");
                 uNumber.pop();
+                uNumber = uNumber.join("");
                 alert(checkSum + " Is the check sum");
                 if (uNumber < 16 && uNumber > 9)
                 {
@@ -88,9 +90,7 @@
                             }
                             else
                             {
-                                stringSum += uNumber[i] + "(" + (letter+10) + ")" + " = ";
-                                alert(uNumber[i]);
-                                
+                                stringSum += uNumber[i] + "(" + (letter+10) + ")" + " = ";                                
                             }
                         }
                         else
