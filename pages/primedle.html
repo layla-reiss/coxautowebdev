@@ -8,9 +8,11 @@
 
             let guesses = 6;
             let trueNumber = 22;
+            const guessRows = ['placeholder','sixth', 'fifth', 'fourth', 'third', 'second', 'first']
             let found = false;
             let hintsLeft = 3;
             let alreadyGuessed = [];
+            let currentGreater = "0<", currentLess = ">0";
             while (isPrime(trueNumber) == false)
             {
                 trueNumber = getRandomInt();
@@ -63,6 +65,28 @@
                     uInput += "<";
                     guesses -= 1;
                 }
+                return uInput;
+            }
+
+            function setBoard()
+            {
+                let uInput = $("#uInput").val()
+                let row = guessRows[guesses];
+                let nextRow = guessRows[guesses - 1];
+                document.getElementById(row + "digit").innerText = uInput;
+                const newInput = checkInput();
+                if (newInput.includes("<"))
+                {
+                    currentGreater = newInput;
+                }
+                else if (newInput.includes(">"))
+                {
+                    currentLess = newInput;
+                }  
+                document.getElementById(nextRow + "greaterthan").innerText = currentGreater;
+                document.getElementById(nextRow + "lessthan").innerText = currentLess;
+
+                
                 if (!found && guesses > 0)
                 {
                     document.getElementById("guessMsg").innerText = "You have " + guesses + " guesses left";
@@ -73,6 +97,7 @@
                 {
                     document.getElementById("guessMsg").innerText = "Game over :( the number was " + trueNumber;
                 }
+
             }
 
             function getHint()
@@ -105,16 +130,52 @@
                 <p id="guessMsg">You have 6 guesses left</p>
                 <p id="alreadyGuessed">You have not guessed any numbers yet</p>
                 <p>Input guess:<input type="number" id="uInput"></p>
-                <input type="button" id="submit" value="submit number" onclick="checkInput()">   
+                <input type="button" id="submit" value="submit number" onclick="setBoard()">   
                 <input type="button" value="hint" onclick="getHint()">        
             </div>
+            <table id="gameboard">
+                <tr id="firstguess">
+                    <th id="firstgreaterthan">--</th>
+                    <th id="firstdigit">00</th>
+                    <th id="firstlessthan">--</th>
+                </tr>
+                <tr id="secondguess">
+                    <th id="secondgreaterthan">--</th>
+                    <th id="seconddigit">00</th>
+                    <th id="secondlessthan">--</th>
+                </tr>                
+                <tr id="thirdguess">
+                    <th id="thirdgreaterthan">--</th>
+                    <th id="thirddigit">00</th>
+                    <th id="thirdlessthan">--</th>
+                </tr>                
+                <tr id="fourthguess">
+                    <th id="fourthgreaterthan">--</th>
+                    <th id="fourthdigit">00</th>
+                    <th id="fourthlessthan">--</th>
+                </tr>                
+                <tr id="fifthguess">
+                    <th id="fifthgreaterthan">--</th>
+                    <th id="fifthdigit">00</th>
+                    <th id="fifthlessthan">--</th>
+                </tr>                
+                <tr id="sixthguess">
+                    <th id="sixgreaterthan">--</th>
+                    <th id="sixdigit">00</th>
+                    <th id="sixlessthan">--</th>
+                </tr>
+            </table>
         </form>
     </body>
-    <script>
+    <script>            
+            document.getElementById("firstgreaterthan").innerText = currentGreater;
+            document.getElementById("firstlessthan").innerText = currentLess;
+
             var input = document.getElementById("uInput");
             input.addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 event.preventDefault();
+                alert($("th.firstguess#firstdigit").val());
                 document.getElementById("submit").click();
             }
             });

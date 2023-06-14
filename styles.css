@@ -17,7 +17,7 @@ table {
 
 th, td {
     background-color: white;
-    border-color: pink;
+    /* border-color: pink; */
 
   }
 
@@ -189,4 +189,12 @@ th, td {
     font-weight: bold;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background-image: linear-gradient(to bottom right, green, aliceblue);
+}
+
+#gameboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    overflow: hidden;
 }
