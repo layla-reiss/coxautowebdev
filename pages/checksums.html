@@ -45,6 +45,8 @@
                 let uNumber = $("#uNumber").val();
                 let checkSum = uNumber.toString().split("");
                 checkSum = checkSum.pop();
+                uNumber.pop();
+                alert(checkSum + " Is the check sum");
                 if (uNumber < 16 && uNumber > 9)
                 {
                     document.getElementById("calculations").innerText = letters[uNumber-10];
