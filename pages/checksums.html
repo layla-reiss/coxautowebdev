@@ -43,21 +43,31 @@
             {
                 document.getElementById("calculations").innerText = "";
                 let uNumber = $("#uNumber").val();
+                let checkSum = uNumber.toString().split("");
+                checkSum = checkSum.pop();
                 if (uNumber < 16 && uNumber > 9)
                 {
                     document.getElementById("calculations").innerText = letters[uNumber-10];
                 }
                 else
                 {
-                    hexaCheckSum(uNumber);
+                    hexaCheckSum(uNumber, checkSum);
                 }
             }
 
-            function hexaCheckSum(uNumber)
+            function hexaCheckSum(uNumber, checkSum)
             {
                 if (uNumber < 16 && uNumber > 9)
                 {
                     document.getElementById("calculations").innerText = letters[uNumber-10];
+                    if (sum == checkSum)
+                    {
+                        alert("The sum matches the check sum");
+                    }
+                    else
+                    {
+                        alert("The sum does not match the check sum");
+                    }
                 }
                 else
                 {
@@ -77,6 +87,8 @@
                             else
                             {
                                 stringSum += uNumber[i] + "(" + (letter+10) + ")" + " = ";
+                                alert(uNumber[i]);
+                                
                             }
                         }
                         else
@@ -103,6 +115,14 @@
                     {
                         sum = convertToHexSum(sum);
                         document.getElementById("calculations").innerText += sum + "\n";
+                        if (sum == checkSum)                           
+                        {
+                            alert("The sum matches the check sum");
+                        }
+                        else
+                        {
+                            alert("The sum does not match the check sum");
+                        }
                     }
                 }
             }
