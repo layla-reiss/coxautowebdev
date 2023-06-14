@@ -22,19 +22,25 @@
                         stringSum += uNumber[i] + " = ";
                     }
                 }
+
                 document.getElementById("calculations").innerText += stringSum + "\n";
-                return sum;
+                if (sum.toString().length != 1)
+                {
+                    document.getElementById("calculations").innerText += sum + "\n";
+                    let uNumber = sum;
+                    checkSum(uNumber);
+                }
+                else
+                {
+                    document.getElementById("calculations").innerText += sum + "\n";      
+                }
             }
 
             function checkSumMenu()
             {
                 document.getElementById("calculations").innerText = "";
                 let uNumber = $("#uNumber").val();
-                while (uNumber.toString().length > 1)
-                {
-                    uNumber = checkSum(uNumber);
-                    document.getElementById("calculations").innerText += uNumber + "\n";
-                }
+                checkSum(uNumber);
             }
         </script>
     </head>
