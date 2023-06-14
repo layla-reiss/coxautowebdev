@@ -8,21 +8,32 @@
             function checkSum(uNumber)
             {
                 let sum = 0;
+                let stringSum = "";
                 uNumber = uNumber.toString().split("");
                 for (let i = 0; i < uNumber.length; i++)
                 {
                     sum += parseInt(uNumber[i]);
+                    if (i != uNumber.length-1)
+                    {
+                        stringSum += uNumber[i] + " + ";
+                    }
+                    else
+                    {
+                        stringSum += uNumber[i] + " = ";
+                    }
                 }
+                document.getElementById("calculations").innerText += stringSum + "\n";
                 return sum;
             }
 
             function checkSumMenu()
             {
+                document.getElementById("calculations").innerText = "";
                 let uNumber = $("#uNumber").val();
                 while (uNumber.toString().length > 1)
                 {
                     uNumber = checkSum(uNumber);
-                    document.getElementById("firstCheckSum").innerText += uNumber + ",";
+                    document.getElementById("calculations").innerText += uNumber + "\n";
                 }
             }
         </script>
@@ -31,5 +42,6 @@
         <p>Enter your number:<input type="text" id="uNumber"></p><br>
         <input type="button" id="submit" value="submit number" onclick="checkSumMenu()">
         <label id="firstCheckSum"></label>
+        <label id="calculations"></label>
     </body>
 </html>
